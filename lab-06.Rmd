@@ -27,10 +27,10 @@ diamonds <- diamonds %>% rename(
 ## Exercise 1
 
 ```{r}
-# Do some preliminary investigations & cleaning
-
-
-
+str(diamonds)
+table(clarity = diamonds$clarity)
+summary(diamonds)
+plot(diamonds$length_mm, diamonds$width_mm, main = "Length vs. Width", xlab = "Length (mm)", ylab = "Width (mm)")
 
 ```
 
@@ -43,6 +43,7 @@ diamonds <- diamonds %>%
   mutate(table_mm = table_pct * width_mm / 100)
 
 # Overall table_mm arithmetic mean?
+mean_table_length <- mean(diamonds$table_mm)
 
 
 
@@ -50,7 +51,11 @@ diamonds <- diamonds %>%
 
 
 # table_mm arithmetic mean within each clarity category
-
+library(dplyr)
+diamonds_summary <- diamonds %>%
+group_by(clarity) %>%
+summarize(mean_table_length = mean(table_mm))
+mean_table_length <- mean(diamonds$table_mm)
 
 
 
