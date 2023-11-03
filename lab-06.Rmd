@@ -43,7 +43,9 @@ diamonds <- diamonds %>%
   mutate(table_mm = table_pct * width_mm / 100)
 
 # Overall table_mm arithmetic mean?
-mean_table_length <- mean(diamonds$table_mm)
+mean_table_width <- mean(diamonds$table_mm)
+print(mean_table_width)
+
 
 
 
@@ -52,18 +54,19 @@ mean_table_length <- mean(diamonds$table_mm)
 
 # table_mm arithmetic mean within each clarity category
 library(dplyr)
-diamonds_summary <- diamonds %>%
-group_by(clarity) %>%
-summarize(mean_table_length = mean(table_mm))
-mean_table_length <- mean(diamonds$table_mm)
-
+diamonds <- diamonds %>%
+  mutate(table_mm = table_pct * width_mm / 100)
+mean_table_width_by_clarity <- diamonds %>%
+  group_by(clarity) %>%
+  summarize(mean_table_mm = mean(table_mm))
+print(mean_table_width_by_clarity)
 
 
 
 
 ```
 
-_Add your comment here_
+_they have different variation in different table lenghth._
 
 ## Exercise 3
 

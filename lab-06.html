@@ -421,20 +421,30 @@ library(ggplot2)</code></pre>
   mutate(table_mm = table_pct * width_mm / 100)
 
 # Overall table_mm arithmetic mean?
-mean_table_length &lt;- mean(diamonds$table_mm)
-
-
-
-
-
-
-# table_mm arithmetic mean within each clarity category
+mean_table_width &lt;- mean(diamonds$table_mm)
+print(mean_table_width)</code></pre>
+<pre><code>## [1] 3.299587</code></pre>
+<pre class="r"><code># table_mm arithmetic mean within each clarity category
 library(dplyr)
-diamonds_summary &lt;- diamonds %&gt;%
-group_by(clarity) %&gt;%
-summarize(mean_table_length = mean(table_mm))
-mean_table_length &lt;- mean(diamonds$table_mm)</code></pre>
-<p><em>Add your comment here</em></p>
+diamonds &lt;- diamonds %&gt;%
+  mutate(table_mm = table_pct * width_mm / 100)
+mean_table_width_by_clarity &lt;- diamonds %&gt;%
+  group_by(clarity) %&gt;%
+  summarize(mean_table_mm = mean(table_mm))
+print(mean_table_width_by_clarity)</code></pre>
+<pre><code>## # A tibble: 8 × 2
+##   clarity mean_table_mm
+##   &lt;ord&gt;           &lt;dbl&gt;
+## 1 I1               3.91
+## 2 SI2              3.71
+## 3 SI1              3.40
+## 4 VS2              3.25
+## 5 VS1              3.20
+## 6 VVS2             2.98
+## 7 VVS1             2.83
+## 8 IF               2.82</code></pre>
+<p><em>they have different variation in different table
+lenghth.</em></p>
 </div>
 <div id="exercise-3" class="section level2">
 <h2>Exercise 3</h2>
