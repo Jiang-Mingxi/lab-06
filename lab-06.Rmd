@@ -66,7 +66,7 @@ print(mean_table_width_by_clarity)
 
 ```
 
-_they have different variation in different table lenghth._
+_they have different variation in different table length._
 
 ## Exercise 3
 
