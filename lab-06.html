@@ -452,7 +452,17 @@ code</em></p>
 </div>
 <div id="exercise-4" class="section level2">
 <h2>Exercise 4</h2>
-<pre class="r"><code># Write gmean() command</code></pre>
+<pre class="r"><code># Write gmean() command
+gmean &lt;- function(x) {if (length(x) == 0) {stop(&quot;Input vector is empty&quot;)}
+if (any(x &lt;= 0)) {stop(&quot;Input vector contains non-positive values&quot;)}
+ln_values &lt;- log(x)
+ln_mean &lt;- mean(ln_values)
+geometric_mean &lt;- exp(ln_mean)
+return(geometric_mean)}
+data &lt;- c(1, 2, 4, 8, 16)
+result &lt;- gmean(data)
+cat(&quot;Geometric Mean:&quot;, result, &quot;\n&quot;)</code></pre>
+<pre><code>## Geometric Mean: 4</code></pre>
 </div>
 <div id="exercise-5" class="section level2">
 <h2>Exercise 5</h2>

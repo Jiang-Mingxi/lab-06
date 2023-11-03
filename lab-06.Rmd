@@ -77,6 +77,19 @@ _Do derivation on paper, unless you know how to write LaTeX code_
 
 ```{r}
 # Write gmean() command
+gmean <- function(x) {if (length(x) == 0) {stop("Input vector is empty")}
+if (any(x <= 0)) {stop("Input vector contains non-positive values")}
+ln_values <- log(x)
+ln_mean <- mean(ln_values)
+geometric_mean <- exp(ln_mean)
+return(geometric_mean)}
+data <- c(1, 2, 4, 8, 16)
+result <- gmean(data)
+cat("Geometric Mean:", result, "\n")
+
+
+
+
 
 
 
